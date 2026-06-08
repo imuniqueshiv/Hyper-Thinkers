@@ -50,7 +50,8 @@ export function TechStackSection() {
       <motion.div
         className="absolute top-20 right-10 w-64 h-64 rounded-full blur-3xl opacity-10"
         style={{
-          background: 'radial-gradient(circle, rgba(0, 102, 255, 0.5) 0%, transparent 70%)',
+          background:
+            'radial-gradient(circle, rgba(0, 102, 255, 0.5) 0%, transparent 70%)',
         }}
         animate={{
           x: [0, 50, 0],
@@ -65,7 +66,8 @@ export function TechStackSection() {
       <motion.div
         className="absolute bottom-20 left-10 w-64 h-64 rounded-full blur-3xl opacity-10"
         style={{
-          background: 'radial-gradient(circle, rgba(0, 217, 255, 0.5) 0%, transparent 70%)',
+          background:
+            'radial-gradient(circle, rgba(0, 217, 255, 0.5) 0%, transparent 70%)',
         }}
         animate={{
           x: [0, -50, 0],
@@ -94,7 +96,8 @@ export function TechStackSection() {
             </span>
           </h2>
           <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-            Built with the latest and greatest technologies trusted by industry leaders.
+            Built with the latest and greatest technologies trusted by industry
+            leaders.
           </p>
         </motion.div>
 
@@ -110,14 +113,17 @@ export function TechStackSection() {
             <motion.div
               key={i}
               variants={itemVariants}
-              className="group relative p-6 rounded-xl border border-border/50 bg-black/60 backdrop-blur-sm hover:border-accent/50 transition-all duration-300"
+              className="group relative p-6 rounded-xl border border-cyan-500/15 bg-[#030712]/90 backdrop-blur-md hover:border-accent/50 transition-all duration-300"
               whileHover={{
                 y: -10,
                 borderColor: 'rgba(0, 217, 255, 0.5)',
               }}
             >
+              {/* Dark card background */}
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#020617] via-[#030712] to-[#000000]" />
+
               {/* Hover glow */}
-              <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/5 to-accent/5" />
+              <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-cyan-500/10 to-blue-500/10" />
 
               {/* Content */}
               <div className="relative z-10 text-center">
