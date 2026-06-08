@@ -110,7 +110,7 @@ export function TechStackSection() {
             <motion.div
               key={i}
               variants={itemVariants}
-              className="group relative p-6 rounded-xl border border-border/50 bg-gradient-to-br from-background/50 to-card/30 hover:border-accent/50 transition-all duration-300"
+              className="group relative p-6 rounded-xl border border-border/50 bg-black/60 backdrop-blur-sm hover:border-accent/50 transition-all duration-300"
               whileHover={{
                 y: -10,
                 borderColor: 'rgba(0, 217, 255, 0.5)',
