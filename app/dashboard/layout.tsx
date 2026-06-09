@@ -1,5 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { Navbar } from "@/components/navbar";
 
 export default async function DashboardLayout({
   children,
@@ -12,5 +13,12 @@ export default async function DashboardLayout({
     redirect("/sign-in");
   }
 
-  return <div>{children}</div>;
+  return (
+    <>
+      <Navbar />
+      <main className="pt-20">
+        {children}
+      </main>
+    </>
+  );
 }

@@ -3,9 +3,13 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useAuth, UserButton } from '@clerk/nextjs'
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
+  
+  // Use the hook to bypass the broken wrapper components
+  const { isLoaded, isSignedIn } = useAuth() 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,42 +81,70 @@ export function Navbar() {
           transition={{ delay: 0.3 }}
           className="hidden sm:flex items-center gap-3"
         >
-          <Link href="/sign-in">
-            <button
-              className="
-                px-5 py-2
-                rounded-lg
-                border border-border
-                bg-background/50
-                text-sm font-medium
-                transition-all duration-300
-                hover:border-accent
-                hover:text-accent
-                hover:bg-background
-              "
-            >
-              Login
-            </button>
-          </Link>
+          {!isLoaded ? (
+            // Placeholder while Clerk loads to prevent UI shifting
+            <div className="w-[150px] h-10 rounded-lg animate-pulse bg-foreground/5" />
+          ) : !isSignedIn ? (
+            <>
+              <Link href="/sign-in">
+                <button
+                  className="
+                    px-5 py-2
+                    rounded-lg
+                    border border-border
+                    bg-background/50
+                    text-sm font-medium
+                    transition-all duration-300
+                    hover:border-accent
+                    hover:text-accent
+                    hover:bg-background
+                  "
+                >
+                  Login
+                </button>
+              </Link>
 
-          <Link href="/sign-up">
-            <button
-              className="
-                px-5 py-2
-                rounded-lg
-                bg-primary
-                text-primary-foreground
-                text-sm font-medium
-                transition-all duration-300
-                hover:scale-105
-                hover:shadow-lg
-                hover:shadow-primary/25
-                active:scale-95
-              "
-            >
-              Sign Up
-            </button>
-          </Link>
+              <Link href="/sign-up">
+                <button
+                  className="
+                    px-5 py-2
+                    rounded-lg
+                    bg-primary
+                    text-primary-foreground
+                    text-sm font-medium
+                    transition-all duration-300
+                    hover:scale-105
+                    hover:shadow-lg
+                    hover:shadow-primary/25
+                    active:scale-95
+                  "
+                >
+                  Sign Up
+                </button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/dashboard">
+                <button
+                  className="
+                    px-5 py-2 mr-2
+                    rounded-lg
+                    border border-border
+                    bg-background/50
+                    text-sm font-medium
+                    transition-all duration-300
+                    hover:border-accent
+                    hover:text-accent
+                    hover:bg-background
+                  "
+                >
+                  Dashboard
+                </button>
+              </Link>
+              <UserButton afterSignOutUrl="/" />
+            </>
+          )}
         </motion.div>
       </div>
     </motion.nav>
