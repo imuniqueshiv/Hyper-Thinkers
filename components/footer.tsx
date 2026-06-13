@@ -78,7 +78,7 @@ export function Footer() {
           <motion.div variants={itemVariants} className="col-span-1 md:col-span-2 lg:col-span-1">
             <h3 className="text-2xl font-bold mb-2">
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Hyper Thinkers
+                Hyper Thinkers for AI Engineering
               </span>
             </h3>
             <p className="text-foreground/60 text-sm mb-6">
